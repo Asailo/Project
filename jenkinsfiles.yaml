@@ -23,15 +23,18 @@ pipeline {
 
         stage('Scan with Snyk') {
             steps {
-                sh "snyk config set disableSuggestions=true"
+                // Disable suggestions and allow vulnerabilities without failing the build
+                sh 'snyk config set disableSuggestions=true'
                 sh "snyk container test ${DOCKER_IMAGE_NAME}:${TAG} --file=${DOCKERFILE_PATH} || true"
             }
         }
 
         stage('Push to Docker Hub') {
             steps {
-                withDockerRegistry([credentialsId: "${DOCKER_CREDENTIALS_ID}", url: "${DOCKER_REGISTRY}"]) {
-                    sh "docker push ${DOCKER_IMAGE_NAME}:${TAG}"
+                script {
+                    docker.withRegistry("https://index.docker.io/v1/", "${DOCKER_CREDENTIALS_ID}") {
+                        sh "docker push ${DOCKER_IMAGE_NAME}:${TAG}"
+                    }
                 }
             }
         }
