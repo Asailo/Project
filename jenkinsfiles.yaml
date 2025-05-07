@@ -15,13 +15,7 @@ pipeline {
     }
 
     stages {
-        stage('Clone Repo') {
-            steps {
-                git 'https://github.com/orisuniyanu/docker-my-website.git'
-            }
-        }
-
-        stage('Build Docker Image') {
+                stage('Build Docker Image') {
             steps {
                 sh "docker build -t ${DOCKER_IMAGE_NAME}:${TAG} -f ${DOCKERFILE_PATH} ."
             }
