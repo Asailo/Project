@@ -6,7 +6,7 @@ pipeline {
         DOCKERFILE_PATH = './Dockerfile'
         DOCKER_REGISTRY = 'https://index.docker.io/v1/'
         DOCKER_CREDENTIALS_ID = 'docker-hub-jenkins'
-        TAG = "v${BUILD_NUMBER}"
+        TAG = "v${env.BUILD_NUMBER}"
         SNYK_TOKEN = credentials('snyk-api-token')
         VM_USER = 'iemmanuel'
         VM_HOST = '192.168.126.131'
