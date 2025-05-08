@@ -48,7 +48,7 @@ pipeline {
                         docker pull ${DOCKER_IMAGE_NAME}:${TAG} &&
                         docker stop app || true &&
                         docker rm app || true &&
-                        docker run -d --name app -p 5400:5400 ${DOCKER_IMAGE_NAME}:${TAG}
+                        docker run -d --name app -p 5400:80 ${DOCKER_IMAGE_NAME}:${TAG}
                     '
                     """
                 }
