@@ -24,8 +24,8 @@ pipeline {
         stage('Scan with Snyk') {
             steps {
                 // Disable suggestions and allow vulnerabilities without failing the build
-                sh 'snyk config set disableSuggestions=true'
-                sh "snyk container test ${DOCKER_IMAGE_NAME}:${TAG} --file=${DOCKERFILE_PATH} || true"
+                
+                sh "snyk container test ${DOCKER_IMAGE_NAME}:${TAG} --file=${DOCKERFILE_PATH}"
             }
         }
 
