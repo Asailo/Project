@@ -1,18 +1,3 @@
 version: v1.20.0
 
-# Ignore known low/medium severity issues that are not exploitable in your setup
-ignore:
-  SNYK-UBUNTU2004-CURL-123456:
-    - '*':
-        reason: "curl is not exposed in runtime; only used during image build"
-        expires: "2025-06-01T00:00:00Z"
-  SNYK-UBUNTU2004-MAN-789123:
-    - '*':
-        reason: "man command not present or used in production containers"
-        expires: "2025-06-01T00:00:00Z"
-  SNYK-UBUNTU2004-TAR-456789:
-    - '*':
-        reason: "tar used only during packaging; no user exposure"
-        expires: "2025-06-01T00:00:00Z"
-
-# Optional: you can add policies here to ignore any outdated libraries if patched manually
+severityThreshold: high
