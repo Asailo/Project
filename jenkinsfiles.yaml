@@ -17,7 +17,7 @@ pipeline {
     stages {
         stage('Checkout Code') {
             steps {
-                git credentialsId: 'github-creds-id', url: 'https://github.com/orisuniyanu/2127_little_fashion.git', branch: 'main'
+                git credentialsId: 'github-creds-id', url: 'https://github.com/Asailo/Project.git', branch: 'main'
             }
         }
 
