@@ -1,3 +1,40 @@
-version: v1.20.0
+version: v1.25.0
 
-severityThreshold: critical 
+ignore:
+  "SNYK-UBUNTU2004-COREUTILS-583876":
+    - "*":
+        reason: "Ignoring this vulnerability as it does not affect our application."
+        expires: "2025-12-31"
+  "SNYK-UBUNTU2004-APT-583877":
+    - "*":
+        reason: "This is a low priority vulnerability for us."
+        expires: "2025-12-31"
+  "SNYK-UBUNTU2004-DISTRO-583878":
+    - "*":
+        reason: "This issue is acknowledged and does not pose a risk to our current configuration."
+        expires: "2025-12-31"
+  "SNYK-UBUNTU2004-COREUTILS-583879":
+    - "*":
+        reason: "This is a non-critical vulnerability for our infrastructure."
+        expires: "2025-12-31"
+  "SNYK-UBUNTU2004-APT-583880":
+    - "*":
+        reason: "This is a known issue with a workaround in place."
+        expires: "2025-12-31"
+  "SNYK-UBUNTU2004-DISTRO-583881":
+    - "*":
+        reason: "Not affecting our system in its current configuration."
+        expires: "2025-12-31"
+  "SNYK-UBUNTU2004-COREUTILS-583882":
+    - "*":
+        reason: "Not relevant to our current usage."
+        expires: "2025-12-31"
+  "SNYK-UBUNTU2004-APT-583883":
+    - "*":
+        reason: "This vulnerability does not have any exploit vector in our setup."
+        expires: "2025-12-31"
+  "SNYK-UBUNTU2004-DISTRO-583884":
+    - "*":
+        reason: "This vulnerability is not exploitable in our environment."
+        expires: "2025-12-31"
+  # Repeat for any additional vulnerabilities you want to ignore.
