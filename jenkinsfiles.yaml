@@ -25,7 +25,7 @@ pipeline {
             steps {
                 // Disable suggestions and allow vulnerabilities without failing the build
                 
-                sh "snyk container test ${DOCKER_IMAGE_NAME}:${TAG} --file=${DOCKERFILE_PATH}"
+               sh "snyk container test ${DOCKER_IMAGE_NAME}:${TAG} --file=${DOCKERFILE_PATH} --policy-path=."
             }
         }
 
