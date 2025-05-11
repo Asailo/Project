@@ -15,6 +15,19 @@ pipeline {
     }
 
     stages {
+        stage('Checkout Code') {
+            steps {
+                git credentialsId: 'github-creds-id', url: 'https://github.com/orisuniyanu/2127_little_fashion.git', branch: 'main'
+            }
+        }
+
+        stage('Verify .snyk') {
+            steps {
+                sh 'echo ".snyk file content:"'
+                sh 'cat .snyk || echo ".snyk file not found!"'
+            }
+        }
+
         stage('Build Docker Image') {
             steps {
                 sh "docker build -t ${DOCKER_IMAGE_NAME}:${TAG} -f ${DOCKERFILE_PATH} ."
@@ -23,9 +36,8 @@ pipeline {
 
         stage('Scan with Snyk') {
             steps {
-                // Disable suggestions and allow vulnerabilities without failing the build
-                
-               sh "snyk container test ${DOCKER_IMAGE_NAME}:${TAG} --file=${DOCKERFILE_PATH} --policy-path=."
+                sh "snyk config set api=${SNYK_TOKEN}"
+                sh "snyk container test ${DOCKER_IMAGE_NAME}:${TAG} --file=${DOCKERFILE_PATH}"
             }
         }
 
