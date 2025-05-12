@@ -1,6 +1,6 @@
-FROM nginx
+FROM nginx:1.28.0-alpine3.21-slim
 
-RUN apt-get update -y && apt-get upgrade -y && apt-get install -y curl vim sudo
+RUN apt-get update -y && apt-get upgrade -y && apt-get install -y curl sudo
 RUN apt-get update -y && apt-get upgrade -y
 RUN rm -rf /var/lib/apt/lists/*
 COPY 2127_little_fashion /usr/share/nginx/html
