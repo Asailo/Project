@@ -1,4 +1,4 @@
-FROM ubuntu:20.04
+FROM ubuntu:20.04:lts
 
 RUN apt-get update -y && apt-get upgrade -y && apt-get install -y nginx curl vim sudo
 RUN apt-get update -y && apt-get upgrade -y
